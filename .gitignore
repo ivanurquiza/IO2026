@@ -7,3 +7,5 @@ venv/
 outputs/
 data/raw/
 *.log
+CLAUDE.md
+_to_delete/
