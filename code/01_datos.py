@@ -3,6 +3,7 @@ TP1 - Metodos Econometricos con Aplicacion a IO (UdeSA, 2026)
 Script 01: construccion de la base de trabajo.
 
 Correr desde la raiz del proyecto:  python code/01_datos.py
+
 """
 
 import numpy as np

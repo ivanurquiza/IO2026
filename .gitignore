@@ -11,3 +11,8 @@ CLAUDE.md
 _to_delete/
 escritos/
 data/base_limpia.csv
+data/blp_agentes.csv
+data/blp_productos.csv
+output/
+code/BLP.py
+code/TP1_IO_Empirica3.ipynb
