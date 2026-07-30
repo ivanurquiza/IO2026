@@ -120,3 +120,22 @@ for nombre, res in resultados.items():
           % (nombre, res.objective.item(), np.round(s[:4], 3),
              res.pi[4, 0], res.converged))
 
+
+# ---------- diagnostico de instrumentos --------------------------------
+# Los 30 precios del mismo producto en distintas tiendas estan muy
+# correlacionados entre si (el laboratorio fija un precio de lista que
+# las tiendas mueven poco). Esto genera multicolinealidad en Z, que
+# debilita la identificacion de los coeficientes de dispersion sigma.
+# Reportamos el numero de condicion de Z como medida de ese problema.
+iv = prod.filter(like="demand_instruments")
+Z = (iv.values - iv.values.mean(0)) / iv.values.std(0)   # estandarizada
+autovalores = np.linalg.eigvalsh(Z.T @ Z / len(Z))
+num_condicion = autovalores[-1] / autovalores[0]
+
+corr = iv.iloc[:, 1:].corr().values
+corr_media = corr[np.triu_indices(corr.shape[0], k=1)].mean()
+
+print("\n--- diagnostico de instrumentos ---")
+print("numero de instrumentos: %d" % iv.shape[1])
+print("numero de condicion de Z: %.0f" % num_condicion)
+print("correlacion media entre los 30 precios-IV: %.3f" % corr_media)

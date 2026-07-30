@@ -4,7 +4,7 @@ del ingreso dentro de cada tienda. TAU no se observa: lo fijamos en 0.5.
 Este script reestima con TAU en {0.2, 0.5, 1.0} para ver cuanto dependen
 de ese supuesto el coeficiente de precio y los sigma.
 
-Correr:  python code/10_sensibilidad_tau.py
+Correr:  python code/09_sensibilidad_tau.py
 """
 import numpy as np, pandas as pd, pyblp
 from pathlib import Path
